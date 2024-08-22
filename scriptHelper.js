@@ -37,7 +37,6 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargo) {
-  event.preventDefault();
   if (
     validateInput(pilot) === "Empty" ||
     validateInput(copilot) === "Empty" ||
@@ -53,75 +52,96 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargo) {
   ) {
     alert("Invalid");
   } else {
-    if (fuelLevel < 10000 && cargo > 10000) {
-      const launchStatusCheck =
-        this.document.getElementById("launchStatusCheck");
-      const h2 = this.document.getElementById("launchStatus");
-      h2.innerHTML = "Shuttle not ready for launch";
+    // if (fuelLevel < 10000 && cargo > 10000) {
+    //   //cargo too heavy,fuel too low
+    //   const launchStatusCheck = document.getElementById("launchStatusCheck");
+    //   const h2 = document.getElementById("launchStatus");
+    //   h2.innerHTML = "Shuttle not ready for Launch";
+    //   h2.style.color = "red";
+    //   console.log(h2);
+    //   list.style = "visibility:visible";
+    //   const pilotStatus = document.getElementById("pilotStatus");
+    //   pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
+    //   const copilotStatus = document.getElementById("copilotStatus");
+    //   copilotStatus.innerHTML = `Co-pilot ${copilot}  is ready for launch`;
+    //   const fuelStatus = document.getElementById("fuelStatus");
+    //   fuelStatus.innerHTML = ` Fuel level high enough for launch`;
+    //   const cargoStatus = document.getElementById("cargoStatus");
+    //   cargoStatus.innerHTML = `Cargo mass too heavy for launch`;
+    // }
+    if (cargo > 10000 && fuelLevel < 10000) {
+      //cargo too heavy and fuel too low
+      const launchStatusCheck = document.getElementById("launchStatusCheck");
+      const h2 = document.getElementById("launchStatus");
+      h2.innerHTML = "Shuttle Not Ready for Launch";
       h2.style.color = "red";
       console.log(h2);
       list.style = "visibility:visible";
-      const pilotStatus = this.document.getElementById("pilotStatus");
+      const pilotStatus = document.getElementById("pilotStatus");
       pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
-      const copilotStatus = this.document.getElementById("copilotStatus");
-      copilotStatus.innerHTML = `Co-Pilot ${copilot}  is ready for launch`;
-      const fuelStatus = this.document.getElementById("fuelStatus");
-      fuelStatus.innerHTML = ` Fuel Level is too low to launch`;
-      const cargoStatus = this.document.getElementById("cargoStatus");
-      cargoStatus.innerHTML = `Cargo mass  is too heavy for launch`;
-    } else if (cargo > 10000 && fuelLevel > 10000) {
-      alert("this is from cargo");
-      const launchStatusCheck =
-        this.document.getElementById("launchStatusCheck");
-      const h2 = this.document.getElementById("launchStatus");
-      h2.innerHTML = "Shuttle not ready for launch";
+      const copilotStatus = document.getElementById("copilotStatus");
+      copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
+      const fuelStatus = document.getElementById("fuelStatus");
+      fuelStatus.innerHTML = `  Fuel level too low for launch`;
+      const cargoStatus = document.getElementById("cargoStatus");
+      cargoStatus.innerHTML = ` Cargo mass too heavy for launch`;
+    }
+
+    if (fuelLevel < 10000 && cargo < 10000) {
+      // fuel too low
+      const launchStatusCheck = document.getElementById("launchStatusCheck");
+      const h2 = document.getElementById("launchStatus");
+      h2.innerHTML = "Shuttle Not Ready for Launch";
       h2.style.color = "red";
       console.log(h2);
       list.style = "visibility:visible";
-      const pilotStatus = this.document.getElementById("pilotStatus");
+      const pilotStatus = document.getElementById("pilotStatus");
       pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
-      const copilotStatus = this.document.getElementById("copilotStatus");
-      copilotStatus.innerHTML = `Co-Pilot ${copilot} is ready for launch`;
-      const fuelStatus = this.document.getElementById("fuelStatus");
-      fuelStatus.innerHTML = ` Fuel level high enough for launch`;
-      const cargoStatus = this.document.getElementById("cargoStatus");
-      cargoStatus.innerHTML = `Cargo mass too heavy for launch`;
-    } else if (fuelLevel < 10000) {
-      const launchStatusCheck =
-        this.document.getElementById("launchStatusCheck");
-      const h2 = this.document.getElementById("launchStatus");
-      h2.innerHTML = "Shuttle not ready for launch";
-      h2.style.color = "red";
-      console.log(h2);
-      list.style = "visibility:visible";
-      const pilotStatus = this.document.getElementById("pilotStatus");
-      pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
-      const copilotStatus = this.document.getElementById("copilotStatus");
-      copilotStatus.innerHTML = `Co-Pilot ${copilot} is ready for launch`;
-      const fuelStatus = this.document.getElementById("fuelStatus");
-      fuelStatus.innerHTML = ` Fuel level too low for launch`;
-      const cargoStatus = this.document.getElementById("cargoStatus");
+      const copilotStatus = document.getElementById("copilotStatus");
+      copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
+      const fuelStatus = document.getElementById("fuelStatus");
+      fuelStatus.innerHTML = ` Fuel level too low for launch `;
+      const cargoStatus = document.getElementById("cargoStatus");
       cargoStatus.innerHTML = `Cargo mass low enough for launch`;
-    } else {
-      alert("this is from else");
-      const launchStatusCheck =
-        this.document.getElementById("launchStatusCheck");
-      const h2 = this.document.getElementById("launchStatus");
-      h2.innerHTML = "Shuttle is ready for launch";
+    }
+    if (cargo > 10000 && fuelLevel >= 10000) {
+      //cargo too heavy and fuel gretaer than or equla to 10000
+      const launchStatusCheck = document.getElementById("launchStatusCheck");
+      const h2 = document.getElementById("launchStatus");
+      h2.innerHTML = "Shuttle Not Ready for Launch";
+      h2.style.color = "red";
+      console.log(h2);
+      list.style = "visibility:visible";
+      const pilotStatus = document.getElementById("pilotStatus");
+      pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
+      const copilotStatus = document.getElementById("copilotStatus");
+      copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
+      const fuelStatus = document.getElementById("fuelStatus");
+      fuelStatus.innerHTML = ` Fuel level high enough for launch `;
+      const cargoStatus = document.getElementById("cargoStatus");
+      cargoStatus.innerHTML = `Cargo mass too heavy for launch`;
+    }
+
+    if (cargo <= 10000 && fuelLevel >= 10000) {
+      //alert("this is from else");
+      const launchStatusCheck = document.getElementById("launchStatusCheck");
+      const h2 = document.getElementById("launchStatus");
+      h2.innerHTML = "Shuttle is Ready for Launch";
       h2.style.color = "green";
       console.log(h2);
       list.style = "visibility:visible";
-      const pilotStatus = this.document.getElementById("pilotStatus");
+      const pilotStatus = document.getElementById("pilotStatus");
       pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
-      const copilotStatus = this.document.getElementById("copilotStatus");
-      copilotStatus.innerHTML = `Co-Pilot ${copilot} is ready for launch`;
-      const fuelStatus = this.document.getElementById("fuelStatus");
+      const copilotStatus = document.getElementById("copilotStatus");
+      copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
+      const fuelStatus = document.getElementById("fuelStatus");
       fuelStatus.innerHTML = `Fuel level high enough for launch`;
-      const cargoStatus = this.document.getElementById("cargoStatus");
+      const cargoStatus = document.getElementById("cargoStatus");
       cargoStatus.innerHTML = `Cargo mass low enough for launch`;
     }
   }
 }
+
 async function myFetch() {
   let planetsReturned;
 

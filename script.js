@@ -11,7 +11,7 @@ window.addEventListener("load", function () {
   button.addEventListener("click", function (event) {
     event.preventDefault();
     formSubmission(
-      this.document,
+      document,
       list,
       pilot.value,
       copilot.value,
@@ -31,7 +31,7 @@ window.addEventListener("load", function () {
       console.log(listedPlanets);
       // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
       let planet = pickPlanet(listedPlanets);
-      console.log(planet);
+      //console.log(planet);
       addDestinationInfo(
         document,
         planet.name,
